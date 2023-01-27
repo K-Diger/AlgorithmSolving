@@ -65,5 +65,4 @@ public class IncorrectMain {
         bw.write("Hing");
         bw.flush();
     }
-
 }
