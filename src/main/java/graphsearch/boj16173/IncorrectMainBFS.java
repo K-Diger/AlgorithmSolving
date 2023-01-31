@@ -5,15 +5,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class IncorrectMainBFS {
 
     private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     private static int[][] graph;
     private static boolean[][] visited;
-    // 오른쪽, 밑
-    private static int[] dx = {1, 0};
-    private static int[] dy = {0, 1};
     private static Queue<int[]> queue = new LinkedList<>();
     private static int n;
 
@@ -52,18 +49,15 @@ public class Main {
             visited[currentRow][currentCol] = true;
 
             int jump = graph[currentRow][currentCol];
+            int movingRow = currentRow + jump;
+            int movingCol = currentCol + jump;
 
-            for (int i = 0; i < 2; i++) {
-                int movingRow = currentRow + dx[i] * jump;
-                int movingCol = currentCol + dy[i] * jump;
-
-                if (movingRow < n && movingCol < n) {
-                    if (!visited[movingRow][currentCol]) {
-                        queue.add(new int[]{movingRow, currentCol});
-                    }
-                    if (!visited[currentRow][movingCol]) {
-                        queue.add(new int[]{currentRow, movingCol});
-                    }
+            if (movingRow < n && movingCol < n) {
+                if (!visited[movingRow][currentCol]) {
+                    queue.add(new int[]{movingRow, currentCol});
+                }
+                if (!visited[currentRow][movingCol]) {
+                    queue.add(new int[]{currentRow, movingCol});
                 }
             }
         }

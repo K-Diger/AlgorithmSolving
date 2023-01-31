@@ -50,7 +50,7 @@ public class Main {
         br.close();
     }
 
-    public static void bfs(int x, int y) {
+    private static void bfs(int x, int y) {
         queue.add(new int[]{x, y});
         visited[x][y] = true;
 
