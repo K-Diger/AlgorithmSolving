@@ -11,8 +11,8 @@ public class Main {
     private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     private static int[][] graph;
     private static boolean[][] visited;
-    private static final int[] dx = {0, 0, -1, 1, 1, -1, -1, 1};
-    private static final int[] dy = {-1, 1, 0, 0, 1, -1, 1, -1};
+    private static final int[] directionX = {0, 0, -1, 1, 1, -1, -1, 1};
+    private static final int[] directionY = {-1, 1, 0, 0, 1, -1, 1, -1};
     private static Queue<int[]> queue = new LinkedList<>();
     private static int w;
     private static int h;
@@ -60,13 +60,13 @@ public class Main {
             int currentY = current[1];
 
             for (int i = 0; i < 8; i++) {
-                int nx = currentX + dx[i];
-                int ny = currentY + dy[i];
+                int nextX = currentX + directionX[i];
+                int nextY = currentY + directionY[i];
 
-                if (nx >= 0 && ny >= 0 && nx < h && ny < w) {
-                    if (!visited[nx][ny] && graph[nx][ny] == 1) {
-                        visited[nx][ny] = true;
-                        queue.add(new int[]{nx, ny});
+                if (nextX >= 0 && nextY >= 0 && nextX < h && nextY < w) {
+                    if (!visited[nextX][nextY] && graph[nextX][nextY] == 1) {
+                        visited[nextX][nextY] = true;
+                        queue.add(new int[]{nextX, nextY});
                     }
                 }
             }
