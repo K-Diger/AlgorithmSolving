@@ -45,7 +45,6 @@ public class Main {
                 if (adjustMatrix[current][i] == 1 && visited[current] == false) {
                     queue.offer(i);
                     visited[i] = true;
-
                 }
             }
         }
